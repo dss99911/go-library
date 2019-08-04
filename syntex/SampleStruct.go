@@ -29,7 +29,14 @@ func SampleStruct() {
 		age:     38,
 		address: "Germany",
 	}
-	fmt.Println(jason.name)
+
+	//without field name
+	test := person{"sdaf", 23, "sdf"}
+
+	//set default value
+	test2 := person{}
+
+	fmt.Println(jason.name, test.name, test2.name)
 
 	user := User{
 		Id:    "dsf",

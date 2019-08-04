@@ -25,7 +25,7 @@ func SampleSwitch2() {
 	}
 }
 
-func SampleSwitch3(a int) {
+func SampleSwitchWithNoCondition(a int) {
 	switch {
 	case a > 1:
 		fmt.Println("a>1")

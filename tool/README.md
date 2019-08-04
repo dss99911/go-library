@@ -14,9 +14,18 @@ Install
     
     ```go install github.com/user/hello```
     
+Remote packages
+===
+- build and install the remote packages 
+- if add to import, IDE tells how to add
+```shell script
+$ go get github.com/golang/example/hello
+$ $GOPATH/bin/hello
+```
 
 Test
 ===
-````go test````
-
-```go test github.com/user/stringutil```
+```shell script
+go test
+go test github.com/user/stringutil
+```
