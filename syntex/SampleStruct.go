@@ -2,6 +2,27 @@ package syntex
 
 import "fmt"
 
+/**
+private class if start with lower character
+*/
+type person struct {
+	name    string
+	age     int
+	address string
+}
+
+type User struct {
+	Id    string
+	Email string
+}
+
+type fieldNameWithType struct {
+	int
+	string
+	person //if doesn't mention field name, it is similar to inherit the type. so, fieldNameWithType can use person's method directly.
+	User
+}
+
 func SampleStruct() {
 	jason := person{
 		name:    "Json S.",
@@ -18,20 +39,22 @@ func SampleStruct() {
 
 	user2 := NewUser("kim", "a@gmail.com")
 	fmt.Println(user2.GetEmail2())
-}
 
-/**
-private class if start with lower character
-*/
-type person struct {
-	name    string
-	age     int
-	address string
-}
+	withType := fieldNameWithType{
+		int:    0,
+		string: "",
+		person: person{
+			name:    "sdf",
+			age:     0,
+			address: "sdaf",
+		},
+		User: User{
+			Id:    "asdf",
+			Email: "asdf",
+		},
+	}
 
-type User struct {
-	Id    string
-	Email string
+	print(withType.GetEmail2())
 }
 
 func NewUser(id, email string) *User {

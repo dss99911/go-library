@@ -15,3 +15,8 @@ Install
     ```go install github.com/user/hello```
     
 
+Test
+===
+````go test````
+
+```go test github.com/user/stringutil```
