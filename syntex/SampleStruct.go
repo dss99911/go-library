@@ -45,7 +45,7 @@ func SampleStruct() {
 	fmt.Println(user.GetEmail())
 
 	user2 := NewUser("kim", "a@gmail.com")
-	fmt.Println(user2.GetEmail2())
+	fmt.Println(user2.GetEmail3())
 
 	withType := fieldNameWithType{
 		int:    0,
@@ -61,7 +61,7 @@ func SampleStruct() {
 		},
 	}
 
-	print(withType.GetEmail2())
+	print(withType.GetEmail3())
 }
 
 func NewUser(id, email string) *User {
@@ -75,6 +75,6 @@ func (u *User) GetID() string {
 	return u.Id
 }
 
-func (u *User) GetEmail() string {
+func (u User) GetEmail() string {
 	return u.Email
 }

@@ -19,4 +19,9 @@ func SampleIf(a int) {
 		fmt.Println(v)
 	}
 
+	v := &person{}
+	if v != nil {
+		fmt.Println("not nil")
+	}
+
 }

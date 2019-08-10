@@ -1,9 +1,7 @@
 package main
 
-import (
-	"go-sample/web/basic"
-)
+import "go-sample/syntex"
 
 func main() {
-	basic.SampleWebDefault()
+	syntex.SampleBufferedChannel()
 }
