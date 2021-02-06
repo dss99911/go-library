@@ -71,6 +71,17 @@ func NewUser(id, email string) *User {
 	}
 }
 
+/**
+there is no way to set default value.
+only this way. we can set some default value
+*/
+func NewDefaultUser() *User {
+	return &User{
+		Id:    "d",
+		Email: "test@gmail.com",
+	}
+}
+
 func (u *User) GetID() string {
 	return u.Id
 }

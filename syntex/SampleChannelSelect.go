@@ -6,8 +6,7 @@ import (
 )
 
 /**
-The difference from just using channel is
-2. fibonacci function wait until receiver request
+if there is two channel, without select, there is no way to wait two channel. only one channel waiting possible. that's why use select to wait several channel and receive first arrived one
 */
 func SampleChannelSelect() {
 	c := make(chan int)

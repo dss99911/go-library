@@ -23,5 +23,14 @@ func SampleIf(a int) {
 	if v != nil {
 		fmt.Println("not nil")
 	}
+}
+
+func SampleIf2() {
+	x := SampleMap2()
+
+	fmt.Println(x["first"])
+	if v, ok := x["second"]; ok {
+		fmt.Println(v)
+	}
 
 }

@@ -7,18 +7,37 @@ func sum10(s []int, c chan int) {
 	for _, v := range s {
 		sum += v
 	}
+	fmt.Println("sum10 start")
 	c <- sum // send sum to c
+	fmt.Println("sum10 end")
 }
 
+/**
+  - one of sending or receiving should be in the goroutine
+  - when receiving, if there is no value in the channel, it waits.
+ */
 func SampleChannel() {
 	s := []int{7, 2, 8, -9, 4, 0}
 
 	c := make(chan int)
 	go sum10(s[:len(s)/2], c)
 	go sum10(s[len(s)/2:], c)
-	x, y := <-c, <-c // receive from c
-
+	x, y := <-c, <-c//wait until goroutine send by channel
+	//x = <- c // if call this, as there is no goroutine working, it crashes
 	fmt.Println(x, y, x+y)
+}
+/**
+- when sending, if receiver is not there, then wait.
+ */
+func SampleChannelNoReceiver() {
+	s := []int{7, 2, 8, -9, 4, 0}
+
+	c := make(chan int)
+	go sum10(s[:len(s)/2], c)
+	go sum10(s[len(s)/2:], c)
+	//result
+	// sum10 start
+	// sum10 start
 }
 
 /**
@@ -37,17 +56,17 @@ func SampleBufferedChannel() {
 Note: Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
 
 Another note: Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.
+if you use range, close() should be falled. if not, range is not stopped.
 */
 func SampleCloseAndRangeChannel() {
-	x, y := 0, 1
-	x, y = y, x
-	fmt.Println(x, y)
+	c := make(chan int)
 
-	c := make(chan int, 20)
-	fmt.Println(cap(c))
-	go fibonacci2(cap(c), c)
+	fmt.Println("cap", cap(c))
+	go fibonacci2(20, c)
 	for i := range c {
+		v, ok := <-c //check if channel is closed
 		fmt.Println(i)
+		fmt.Println(v, ok)
 	}
 }
 

@@ -3,16 +3,19 @@ package syntex
 import "fmt"
 
 func SampleFor() {
-	sum()
+	Sum()
 	sum2()
 	sum3()
 	infinite()
 }
 
-func sum() {
+func Sum() {
 	sum := 0
 	for i := 0; i < 10; i++ {
 		sum += i
+		if i > 6 {
+			break
+		}
 	}
 	fmt.Println(sum)
 }
